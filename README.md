@@ -68,7 +68,7 @@ u"These are first words in the book content"
 
 Furthermore, `django-weed` has integration with Nginx's X-Accel-Redirect so you can safely serve data from Weed-FS. You have to add `djweed` to your INSTALLED_APPS in settings.py and assign url in urls.py to `djweed.urls`, i.e.:
 
-```
+```python
 (r'^media/', include('djweed.urls')),
 ```
 
@@ -76,7 +76,7 @@ There is no special Nginx configuration as it supports X-Accel-Redirect out of t
 
 Once you configured `djweed` you could get url from content:
 
-```
+```python
 >>> book.content.url
 "/media/15/1/content/book_content_2.txt"
 ```
