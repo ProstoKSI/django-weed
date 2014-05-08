@@ -30,6 +30,7 @@ How to use
 `django-weed` provides `WeedFSFileField` model field, so if you have regular `FileField` in your models:
 
 .. code:: python
+
     class Book(models.Model):
         name = models.CharField(_("Name"), max_length=255)
         content = models.FileField(_("Content"), upload_to=settings.CONTENT_URL)
@@ -37,6 +38,7 @@ How to use
 you can easily convert this `FileField` to `WeedFSFileField`:
 
 .. code:: python
+
     from djweed.db_fields import WeedFSFileField
 
     class Book(models.Model):
@@ -48,6 +50,7 @@ Note: there is no sense in upload_to keyword for Weed-FS as it uses flat file id
 After that you can use content almost as before.
 
 .. code:: python
+
     >>> book = Book.objects.get(id=1)
     >>> from django.core.files import File
     >>> book.content = File(open('/tmp/book_content_1.txt'))
@@ -67,6 +70,7 @@ After that you can use content almost as before.
 Furthermore, `django-weed` has integration with Nginx's X-Accel-Redirect so you can safely serve data from Weed-FS. You have to add `djweed` to your INSTALLED_APPS in settings.py and assign url in urls.py to `djweed.urls`, i.e.:
 
 .. code:: python
+
     (r'^media/', include('djweed.urls')),
 
 There is no special Nginx configuration as it supports X-Accel-Redirect out of the box and the link will point to the Weed-FS volume.
@@ -74,5 +78,6 @@ There is no special Nginx configuration as it supports X-Accel-Redirect out of t
 Once you configured `djweed` you could get url from content:
 
 .. code:: python
+
     >>> book.content.url
     "/media/15/1/content/book_content_2.txt"
