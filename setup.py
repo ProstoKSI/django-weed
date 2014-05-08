@@ -27,8 +27,8 @@ META_DATA = {
 
     'packages': find_packages(),
 
-    'install_requires': ['pyweed>0.3.2', ],
-)
+    'install_requires': ('django', 'pyweed>=0.3.2', ),
+}
 
 if __name__ == "__main__":
     setup(**META_DATA)
