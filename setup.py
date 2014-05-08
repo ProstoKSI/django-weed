@@ -16,7 +16,7 @@ def read(fname):
 META_DATA = {
     'name': 'django-weed',
     'version': __version__,
-    'description': read('DESCRIPTION'),
+    'description': "Weed-FS integration into Django as a storage",
     'long_description': read('README.md'),
     'license': 'MIT',
 
