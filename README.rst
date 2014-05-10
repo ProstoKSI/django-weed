@@ -1,12 +1,12 @@
 django-weed
 ===========
 
-This project provides [Weed-FS](https://code.google.com/p/weed-fs/) integration with Django by giving model field.
+This project provides `Weed-FS <https://code.google.com/p/weed-fs/>`_ integration with Django by giving model field.
 
 Dependencies
 ============
 
-This project is built on top of [pyweed](https://github.com/utek/pyweed) project which provides Python implementation of API to Weed-FS.
+This project is built on top of `pyweed <https://github.com/utek/pyweed>`_ project which provides Python implementation of API to Weed-FS.
 
 Thus dependencies are:
 
