@@ -60,3 +60,7 @@ class WeedFSStorage(Storage):
 
     def modified_time(self, name):
         return DATE_IS_NOT_AVAILABLE
+
+    def deconstruct(self):
+        return ('{}.{}'.format(self.__class__.__module__, self.__class__.__name__), [],
+                {'master_host': self.master_host, 'master_port': self.master_port})

@@ -3,8 +3,6 @@ from django.core.urlresolvers import reverse
 from django.db.models.fields.files import FieldFile, FileField
 from django.utils import six
 
-from south.modelsinspector import introspector
-
 from .storage import WeedFSStorage
 
 
@@ -53,6 +51,8 @@ class WeedFSFileField(FileField):
     attr_class = WeedFSFieldFile
 
     def __init__(self, verbose_name=None, name=None, storage=None, **kwargs):
+        kwargs.pop('upload_to', None)
+        storage = kwargs.pop('storage', None)
         if storage is None:
             storage = WeedFSStorage()
 
@@ -73,6 +73,7 @@ class WeedFSFileField(FileField):
         return self.storage.save(None, value)
 
     def south_field_triple(self):
+        from south.modelsinspector import introspector
         field_class = "django.db.models.fields.CharField"
         args, kwargs = introspector(self)
         return (field_class, args, kwargs)
