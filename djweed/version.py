@@ -1,2 +1,3 @@
-VERSION = (0, 1, 2)
-__version__ = '.'.join(unicode(x) for x in VERSION)
+VERSION = (0, 2, 0)
+
+__version__ = "%s.%s.%s" % VERSION

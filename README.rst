@@ -1,7 +1,7 @@
 django-weed
 ===========
 
-This project provides `Weed-FS <https://code.google.com/p/weed-fs/>`_ integration with Django by giving model field.
+This project provides `Weed-FS <https://code.google.com/p/weed-fs/>`_ integration with Django by giving model field. Works with Python 2 and Python 3 with Django 1.8+
 
 Dependencies
 ============
@@ -27,6 +27,15 @@ or
 How to use
 ==========
 
+Add `django-weed` specific constants to your `settings.py`
+
+.. code:: python
+
+    # django-weed
+    WEEDFS_MASTER_HOST = 'localhost'  # replace with your SeaweedFS master host
+    WEEDFS_MASTER_PORT = 9333  # replace with your SeaweedFS master port
+    ALLOW_NGINX_X_ACCEL_REDIRECT = True
+
 `django-weed` provides `WeedFSFileField` model field, so if you have regular `FileField` in your models:
 
 .. code:: python
@@ -45,7 +54,7 @@ you can easily convert this `FileField` to `WeedFSFileField`:
         name = models.CharField(_("Name"), max_length=255)
         content = WeedFSFileField(_("Content"))
 
-Note: there is no sense in upload_to keyword for Weed-FS as it uses flat file id structure.
+Note: there is no sense in `upload_to` keyword for Weed-FS as it uses flat file id structure.
 
 After that you can use content almost as before.
 

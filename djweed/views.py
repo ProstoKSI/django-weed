@@ -13,7 +13,7 @@ def get_file(request, content_type_id, object_id, field_name, file_name):
         field = getattr(obj, field_name)
     except (ObjectDoesNotExist, AttributeError):
         raise Http404
-    if settings.ALLOW_NGINX_X_ACCEL_REDIRECT:
+    if getattr(settings, 'ALLOW_NGINX_X_ACCEL_REDIRECT'):
         response = HttpResponse()
         response['X-Accel-Redirect'] = field.storage_url
     else:
