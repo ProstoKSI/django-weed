@@ -13,7 +13,7 @@ class WeedFSFieldFile(FieldFile):
         if len(splitted_name) == 2:
             return splitted_name
         return splitted_name[0], ''
-            
+
     def _get_storage_fid(self):
         return self._split_name()[0]
     storage_fid = property(_get_storage_fid)
@@ -21,7 +21,7 @@ class WeedFSFieldFile(FieldFile):
     def _get_verbose_name(self):
         return self._split_name()[1]
     verbose_name = property(_get_verbose_name)
-   
+
     def _get_content(self):
         self._require_file()
         return self.storage.content(self.storage_fid)
@@ -42,7 +42,7 @@ class WeedFSFieldFile(FieldFile):
         self._require_file()
         return self.storage.url(self.storage_fid)
     storage_url = property(_get_storage_url)
- 
+
 
 class WeedFSFileField(FileField):
 
@@ -57,7 +57,7 @@ class WeedFSFileField(FileField):
             storage = WeedFSStorage()
 
         super(WeedFSFileField, self).__init__(verbose_name, name,
-            storage=storage, upload_to='/', **kwargs)
+            storage=storage, **kwargs)
 
     def get_prep_value(self, value):
         "Returns field's value prepared for saving into a database."
