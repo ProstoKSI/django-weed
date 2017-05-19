@@ -7,6 +7,12 @@ from django.core.files.storage import Storage
 
 from pyweed import WeedFS
 
+# Python 2.x compatible
+try:
+    FileNotFoundError
+except NameError:
+    FileNotFoundError = OSError
+
 
 DATE_IS_NOT_AVAILABLE = datetime.min
 
@@ -36,7 +42,10 @@ class WeedFSStorage(Storage):
         fid = self.fs.upload_file(stream=content.file, name=name)
         content.close()
         if hasattr(content, 'temporary_file_path'):
-            os.remove(content.temporary_file_path())
+            try:
+                os.remove(content.temporary_file_path())
+            except FileNotFoundError:
+                pass
         return '%s:%s' % (fid, name)
 
     def delete(self, name):
