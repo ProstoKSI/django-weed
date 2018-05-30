@@ -11,7 +11,7 @@ This project is built on top of `pyweed <https://github.com/utek/pyweed>`_ proje
 Thus dependencies are:
 
 * configured Weed-fS
-* pyweed module
+* pyseaweed module
 * django (tested only with 1.6 now, but should work with early releases as well)
 
 

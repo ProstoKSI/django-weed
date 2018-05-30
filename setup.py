@@ -27,7 +27,7 @@ META_DATA = {
 
     'packages': find_packages(),
 
-    'install_requires': ('django', 'pyweed>=0.3.3', ),
+    'install_requires': ('django', 'pyseaweed>=0.3.3', ),
 }
 
 if __name__ == "__main__":
